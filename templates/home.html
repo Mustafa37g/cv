@@ -81,7 +81,7 @@
           <section>
             <h2>💼 Work</h2>
             {% for work_data in work_experiences %}
-                <details open>
+                <details>
                     <summary>
                         <time datetime="{{ work_data.work_experience.start_date|date:'Y-m' }}">
                             {{ work_data.work_experience.start_date|date:'F Y' }}
