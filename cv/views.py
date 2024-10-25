@@ -12,7 +12,7 @@ def cv_view(request):
     skills = Skill.objects.all()
     work_experiences = WorkExperience.objects.all().order_by('-start_date')
     educations = Education.objects.all().order_by('-start_date')
-    projects = Project.objects.filter().order_by('-start_date')
+    projects = Project.objects.filter().order_by('start_date')
     bio = Bio.objects.all().order_by('id')
     work_experiences_with_descriptions = [
         {
