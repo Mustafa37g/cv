@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+  <meta charset="utf-8">
+  <title>CV | Mustafa Muhammed</title>
+  <meta name="viewport" content=
+  "width=device-width, initial-scale=1">
+  <link href={% static 'css/styles.css' %} rel="stylesheet">
+  <meta name="author" content="Mustafa Muhammed">
+  <meta name="generator" content="Pelican">
+  <meta property="og:site_name" content="Mustafa Muhammed">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:image:alt" content="Mustafa Muhammed">
+  <meta property="og:image:width" content="300">
+  <meta property="og:image:height" content="300">
+  <meta name="twitter:image" content=
+  "https://carrick.eu/theme/images/logo.png">
+  <meta name="twitter:image:alt" content="Mustafa Muhammed">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@knyghty">
+  <meta name="twitter:site" content="@knyghty">
+  <meta name="description" property="og:description" content=
+  "Mustafa Muhammed's web development CV / resume.">
+  <meta name="twitter.description" content=
+  "Mustafa Muhammed's web development CV / resume.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <a class="skip-link" href='#main'>Skip to content</a>
+  <header class="site-header" role="banner">
+  </header>
+  <main class="content-container" id="main">
+    <section class="content-area">
+      <header class="content-header">
+        <h1>CV</h1>
+      </header>
+      <div class="content">
+        <article>
+          <section>
+            <i class="fa-sharp fa-solid fa-chevron-right icon-text-combo" style="color: #26a269; margin-right: 0; padding: 0; vertical-align: middle;"></i><a id="welcome-message" style="margin-left: 0; padding: 0;">Welcome to my website!</a>
+            {% for my_bio in bio %}
+                <p>{{ my_bio.bio }}</p>
+            {% endfor %}
+          </section>
+          <section>
+            <h2>📇 Contact</h2>
+            <address>
+              <ul class="unstyled">
+                <li>
+                  <a href=
+                  "mailto:mabdelaal474@gmail.com">mabdelaal474@gmail.com</a> <i class="fa-solid fa-envelope"></i>
+                </li>
+                  <li>
+                  <a href="https://wa.me/201013511088">+20 101-351-1088</a> <i class="fa-brands fa-whatsapp"></i>
+                </li>
+                <li>
+                  <a href="https://github.com/Mustafa37g">GitHub</a> <i class="fa-brands fa-github"></i>
+                </li>
+                  <li>
+                  <a href="https://www.linkedin.com/in/0xmustafa37/">LinkedIn</a> <i class="fa-brands fa-linkedin"></i>
+                </li>
+              </ul>
+            </address>
+          </section>
+          <section>
+            <h2>🧰 Skills, languages & tools</h2>
+            <ul class="skill-list">
+                {% for skill in skills %}
+                <li><i class="{{ skill.icon }}"></i> {{ skill.skill_name }}</li>
+                {% endfor %}
+            </ul>
+          </section>
+          <section>
+            <h2>💼 Work</h2>
+            {% for work_data in work_experiences %}
+                <details open>
+                    <summary>
+                        <time datetime="{{ work_data.work_experience.start_date|date:'Y-m' }}">
+                            {{ work_data.work_experience.start_date|date:'F Y' }}
+                        </time>
+                        –
+                        {% if work_data.work_experience.end_date %}
+                            <time datetime="{{ work_data.work_experience.end_date|date:'Y-m' }}">
+                                {{ work_data.work_experience.end_date|date:'F Y' }}
+                            </time>
+                        {% else %}
+                            present
+                        {% endif %}
+                        {{ work_data.work_experience.job_title }} ({{ work_data.work_experience.employment_type|title }}) at 
+                        <a href="{{ work_data.work_experience.linked_in }}" target="_blank">
+                            {{ work_data.work_experience.company_name }}
+                        </a>
+                    </summary>
+                    <ul>
+                        {% for description in work_data.descriptions %}
+                            <li>{{ description.description }}</li>
+                        {% endfor %}
+                    </ul>
+                </details>
+            {% endfor %}
+            
+          </section>
+         <section>
+          <h1>Personal projects</h1>
+          {% for project in projects %}
+          <details>
+            <summary>{{ project.project_title }}</summary>
+            <p>{{ project.description }}</p>
+            <p>Technologies used: {{ project.technologies_used }}</p>
+            {% if project.project_url %}
+            <p>Project URL: <a href="{{ project.project_url }}">{{ project.project_url }}</a></p>
+            {% endif %}
+            <p><time datetime="{{ project.start_date }}">{{ project.start_date|date:"Y-m" }}</time>–<time datetime="{{ project.end_date }}">{{ project.end_date|date:"Y-m" }}</time></p>
+          </details>
+          {% endfor %}
+        </section>
+
+         <section>
+          <h1>🎓 Education</h1>
+          {% for education in educations %}
+          <details>
+            <summary>
+                {{ education.institution_name }}
+            </summary>
+            <p><time datetime="{{ education.start_date }}">{{ education.start_date|date:"Y" }}</time>–<time datetime="{{ education.end_date }}">{{ education.end_date|date:"Y" }}</time></p>
+            <p>Field of study: {{ education.field_of_study }}</p>
+            <p>Degree: {{ education.degree }}</p>
+          </details>
+          {% endfor %}
+        </section>
+        </article>
+      </div>
+    </section>
+  <div class="SectionDivider-styles__StyledSectionDivider-sc-81349b90-0 dVbBNr">
+      <svg xmlns="http://www.w3.org/2000/svg" width="523" height="100" viewBox="0 0 523 100" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.67176e-06 79L112 79L112 37L241 37L241 62L339 62L339 -1.70213e-05L523 -1.0851e-07L523 100L339 100L339 100L241 100L112 100L0 100L3.67176e-06 79Z" fill="currentColor"></path>
+      </svg>
+    </div>
+  </main>
+  <footer class="site-footer">
+    © Mustafa Muhammed
+    <ul class="inline unstyled">
+      <li>
+        <a href="https://github.com/Mustafa37g">GitHub</a>
+      </li>
+    </ul>
+  </footer>
+  <script src={% static 'js/script.js' %}></script>
+</body>
+</html>
