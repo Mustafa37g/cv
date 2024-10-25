@@ -39,7 +39,8 @@
   <main class="content-container" id="main">
     <section class="content-area">
       <header class="content-header">
-        <h1>CV</h1>
+        <h1>Mustafa Mohammed</h1>
+          <h2>Mid-Level Django Developer</h2>
       </header>
       <div class="content">
         <article>
@@ -93,7 +94,7 @@
                         {% else %}
                             present
                         {% endif %}
-                        {{ work_data.work_experience.job_title }} ({{ work_data.work_experience.employment_type|title }}) at 
+                        {{ work_data.work_experience.job_title }} ({{ work_data.work_experience.employment_type|title }}) at
                         <a href="{{ work_data.work_experience.linked_in }}" target="_blank">
                             {{ work_data.work_experience.company_name }}
                         </a>
@@ -105,7 +106,7 @@
                     </ul>
                 </details>
             {% endfor %}
-            
+
           </section>
          <section>
           <h1>Personal projects</h1>
